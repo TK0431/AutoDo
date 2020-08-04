@@ -43,7 +43,7 @@ def get_hwnd_pic(hwnd):
 
 
 if __name__ == "__main__":
-    hwnd = get_hwnd(None,"ConsoleWindowClass")
+    hwnd = get_hwnd(None,"Notepad")
     print(hwnd)
     print(get_win_rect(hwnd))
     print(get_win_size(hwnd))
