@@ -47,6 +47,6 @@ if __name__ == "__main__":
     print(hwnd)
     print(get_win_rect(hwnd))
     print(get_win_size(hwnd))
-    pic.get_pic(hwnd)
+    #pic.get_pic(hwnd)
     #get_hwnd_pic(hwnd)
     #print(win32gui.FindWindow("无标题 - 记事本", "Notepad"))
