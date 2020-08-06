@@ -1,22 +1,45 @@
 from help_user32 import *
 from pic import *
 from help_cv import *
-import time
-import cv2
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtGui import *
+from key import *
+import _thread
 
 
-hwnd = get_hwnd(None,"Notepad")
-#hwnd = get_hwnd("AutoTest",None)
-#hwnd = win32gui.FindWindow(None, 'C:\Windows\system32\cmd.exe')
+def press_a():
+    send_key_sed('a', 0.1)
+
+
+def press_w():
+    send_key_sed('w', 0.1)
+
+
+def press_s():
+    send_key_sed('s', 0.1)
+
+
+def press_d():
+    send_key_sed('d', 0.1)
+
+
+hwnd = get_hwnd("逍遥模拟器", "Qt5QWindowIcon")
+path = r"D:\12.jpg"
+
+set_top_hwnd(hwnd)
+
+flg = True
 while True:
     try:
-        img = read_hwnd0_img(hwnd)
-        #img = get_pic2(get_win_rect(hwnd))
-        debug_show_img(read_qt5_img(img))
+        # 窗口截图
+        read_hwnd_save_img(hwnd, path)
+        # 截图保存
+        img = read_img(path)
+        # debug_show_img(img)
         #img = None
+        if flg:
+            _thread.start_new_thread(press_a)
+            _thread.start_new_thread(press_w)
+            flg = False
     except Exception as e:
         print(e)
-    #time.sleep(100)
+    # time.sleep(100)
     cv2.waitKey(1)

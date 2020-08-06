@@ -1,9 +1,7 @@
 from help_cv import *
 from help_user32 import *
 
-
-
-hwnd = get_hwnd(None,"Notepad")
+hwnd = get_hwnd("逍遥模拟器","Qt5QWindowIcon")
 
 img = read_hwnd0_img(hwnd)
 #img = read_hwnd_size_img(hwnd)

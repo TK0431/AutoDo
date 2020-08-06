@@ -29,6 +29,12 @@ def click_mouse(x, y, tp=1, times=1):
     m.click(x, y, tp, times)
 
 
+def send_key_sed(key,sed):
+    send_press_key(key)
+    time.sleep(sed)
+    send_release_key(key)
+
+
 def send_key(key):
     """
     模拟键盘键

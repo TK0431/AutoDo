@@ -3,6 +3,9 @@ import pic
 
 
 def get_hwnd(name, clss=None):
+    """
+    获取窗口
+    """
     return win32gui.FindWindow(clss, name)
 
 
@@ -20,6 +23,9 @@ def get_win_size(hwnd):
     left, top, right, bottom = get_win_rect(hwnd)
     return right-left, bottom-top
 
+
+def set_top_hwnd(hwnd):
+    win32gui.SetForegroundWindow(hwnd)
 
 def get_top_hwnd():
     return win32gui.GetForegroundWindow()

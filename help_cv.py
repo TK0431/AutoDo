@@ -27,17 +27,25 @@ def read_qt5_img(imgQt5):
     return arr
 
 
+def read_hwnd_save_img(hwnd, path):
+    app = QApplication(sys.argv)
+    screen = QApplication.primaryScreen()
+    img = screen.grabWindow(hwnd, 0, 0, -1, -1).toImage()
+    img.save(path)
+    # return img
+
+
 def read_hwnd0_img(hwnd):
     app = QApplication(sys.argv)
     screen = QApplication.primaryScreen()
-    img = screen.grabWindow(hwnd, 0, 0-1, -1).toImage()
+    img = screen.grabWindow(hwnd, 0, 0, -1, -1).toImage()
     return img
 
 
 def read_hwnd_img(hwnd):
     app = QApplication(sys.argv)
     screen = QApplication.primaryScreen()
-    img = screen.grabWindow(hwnd, 0, 0-1, -1).toImage()
+    img = screen.grabWindow(hwnd, 0, 0, -1, -1).toImage()
     return read_qt5_img(img)
 
 
