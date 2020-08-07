@@ -4,7 +4,7 @@ import time                # 连续进行两个动作可能太快而效果不明
 
 m = PyMouse()              # 鼠标的实例m
 k = PyKeyboard()           # 键盘的实例k
-
+s = 0.1                    # 双击间隔时间
 
 def get_screen_size():
     """
@@ -34,20 +34,89 @@ def send_key_sed(key,sed):
     time.sleep(sed)
     send_release_key(key)
 
-
 def send_key(key):
     """
     模拟键盘键
     """
     k.tap_key(key)
 
+# press key
+def p_udlr(key):
+    send_press_key(key)
+def p_up(key = k.up_key):
+    p_udlr(key)
+def p_down(key = k.down_key):
+    p_udlr(key)
+def p_left(key = k.left_key):
+    p_udlr(key)
+def p_right(key = k.right_key):
+    p_udlr(key)
+
+# release key
+def r_udlr(key):
+    send_release_key(key)
+def r_up(key = k.up_key):
+    r_udlr(key)
+def r_down(key = k.down_key):
+    r_udlr(key)
+def r_left(key = k.left_key):
+    r_udlr(key)
+def r_right(key = k.right_key):
+    r_udlr(key)
+
+# press two
+def p_two(key1,key2):
+    send_press_key(key1)
+    send_press_key(key2)
+def p_left_up(l = k.left_key, u = k.up_key):
+    p_two(l,u)
+def p_right_up(r = k.right_key, u = k.up_key):
+    p_two(r,u)
+def p_left_down(l = k.left_key, d = k.down_key):
+    p_two(l,d)
+def p_right_down(r = k.right_key, d = k.down_key):
+    p_two(r,d)
+
+# release tow
+def r_two(key1,key2):
+    send_release_key(key1)
+    send_release_key(key2)
+def r_left_up(l = k.left_key, u = k.up_key):
+    r_two(l,u)
+def r_left_up(r = k.right_key, u = k.up_key):
+    r_two(r,u)
+def r_left_down(l = k.left_key, d = k.down_key):
+    r_two(l,d)
+def r_right_down(r = k.right_key, d = k.down_key):
+    r_two(r,d)
+
+# run
+def p_run(key,slp):
+    send_key_sed(key,slp)
+    send_press_key(key)
+def pr_left(key = k.left_key,slp = s):
+    p_run(key,slp)
+def pr_right(key = k.right_key,slp = s):
+    p_run(key,slp)
+
+# run two
+def p_run_two(key1,key2,slp):
+    p_run(key1,slp)
+    send_press_key(key2)
+def pr_left_up(l = k.left_key,u = k.up_key,slp = s):
+    p_run_two(l,u,slp)
+def pr_right_up(r = k.right_key,u = k.up_key,slp = s):
+    p_run_two(r,u,slp)
+def pr_left_down(l = k.left_key,d = k.down_key,slp = s):
+    p_run_two(l,d,slp)
+def pr_right_down(r = k.right_key,d = k.down_key,slp = s):
+    p_run_two(r,d,slp)
 
 def send_press_key(key):
     """
     模拟键盘按键
     """
     k.press_key(key)
-
 
 def send_release_key(key):
     """

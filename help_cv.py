@@ -111,12 +111,21 @@ def get_erode_image(img):
     return cv2.erode(img, kernel, iterations=1)
 
 
+def get_m_point(img):
+    faceCascasde = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+    imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    faces = faceCascasde.detectMultiScale(imgGray, 1.1, 5)
+
+    for(x, y, w, h) in faces:
+        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+        yield  (x+w)//2,(y+h)//2
+
 def get_image_shape(img):
     return img.shape
 
 
-def resize_image(img):
-    return cv2.resize(img, (300, 200))
+def resize_image(img,w = 50,h = 50):
+    return cv2.resize(img, (w, h))
 
 
 def crop_image(img):
@@ -233,7 +242,7 @@ def get_6(img):
 
 
 if __name__ == "__main__":
-    img = read_img(r"D:\5.jpg")  # 读取图片
+    img = read_img(r"D:\0.jpg")  # 读取图片
     print(get_image_shape(img))
 
     # gray = get_cvt_image(img, cv2.COLOR_BGR2GRAY) # 彩色图片灰度化
