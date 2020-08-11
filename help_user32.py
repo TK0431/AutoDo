@@ -27,6 +27,7 @@ def get_win_size(hwnd):
 def set_top_hwnd(hwnd):
     win32gui.SetForegroundWindow(hwnd)
 
+
 def get_top_hwnd():
     return win32gui.GetForegroundWindow()
 
